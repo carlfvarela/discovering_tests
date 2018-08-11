@@ -31,6 +31,7 @@ def step_impl(context):
     context.browser.get('https://sprinkle-burn.glitch.me/')
     context.browser.find_element_by_name('email').send_keys('tesst@drugdev.com')
     context.browser.find_element_by_name('password').send_keys('superss3cret')
+    context.browser.find_element_by_xpath("//*[@id=\"login-form\"]/fieldset/div[4]/button").click()
 
 
 @then(u'the user is presented with a error message')
