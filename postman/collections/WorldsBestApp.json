@@ -103,19 +103,13 @@
 					"raw": "{\n\t\"email\": \"test@drugdev.com\",\n\t\"password\": \"supers3ceret\"\n}"
 				},
 				"url": {
-					"raw": "{{base_url}}/api/login?postman-token=\"898473f1-f33f-4336-b431-rd847b4ec\"rrr",
+					"raw": "{{base_url}}/api/login",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
 						"login"
-					],
-					"query": [
-						{
-							"key": "postman-token",
-							"value": "\"898473f1-f33f-4336-b431-rd847b4ec\"rrr"
-						}
 					]
 				},
 				"description": "Create error login request"
