@@ -55,7 +55,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "31be119c-fbc1-48cc-bf53-343586a2584c",
+						"id": "22905655-9fe8-4bd7-bc1d-570ec4836ee1",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"return an array of errors\", function () {",
@@ -68,11 +68,20 @@
 							"    pm.expect(jsonData.errors[0].title).to.eql('Credentials are incorrect');",
 							"});",
 							"",
+							"// unable to simulate 401 error; as 401 is related to unauthorized access returned the string if wrong credentials are used",
+							"",
 							"pm.test(\"Status code is 401\", function () {",
 							"    var jsonData = pm.response.json()",
-							"    if (pm.expect(jsonData.errors[0])){",
+							"    //as code 401 is for unauthorized access ",
+							"    if (pm.expect(jsonData.errors[0].title).to.eql('Credentials are incorrect')){",
 							"        return \"Status code is 401\"",
 							"    }",
+							"});",
+							"",
+							"// this test for 401 error is correct, just not being able to force a 401 error ",
+							"",
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
 							"});"
 						]
 					}
@@ -94,13 +103,19 @@
 					"raw": "{\n\t\"email\": \"test@drugdev.com\",\n\t\"password\": \"supers3ceret\"\n}"
 				},
 				"url": {
-					"raw": "{{base_url}}/api/login",
+					"raw": "{{base_url}}/api/login?postman-token=\"898473f1-f33f-4336-b431-rd847b4ec\"rrr",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
 						"api",
 						"login"
+					],
+					"query": [
+						{
+							"key": "postman-token",
+							"value": "\"898473f1-f33f-4336-b431-rd847b4ec\"rrr"
+						}
 					]
 				},
 				"description": "Create error login request"
